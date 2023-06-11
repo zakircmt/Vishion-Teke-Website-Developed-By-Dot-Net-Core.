@@ -1,0 +1,39 @@
+﻿@model IEnumerable<VisionTake.Entities.TblNews>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Team</h2>
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Team</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box iconbox-blue">
+                        <div class="bg-image hover-zoom">
+                            <a href="@Url.Action("Detail","News",new { ID=item.ID})"><img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid w-100" alt="" style="width: 356px; height: 231px; border-radius: 5px;"></a>
+                        </div>
+                        <h6><a href="@Url.Action("Detail","News",new { ID=item.ID})">Date @item.CreateDate</a></h6>
+                        <h4><a href="@Url.Action("Detail","News",new { ID=item.ID})"> @item.NewsTitle</a></h4>
+                        <p>@(item.NewsDescription.Length > 200 ? item.NewsDescription.Substring(0, 199) : item.NewsDescription)</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section><!-- End Services Section -->

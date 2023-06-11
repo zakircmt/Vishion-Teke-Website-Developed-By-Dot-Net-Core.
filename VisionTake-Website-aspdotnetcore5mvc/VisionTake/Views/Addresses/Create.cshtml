@@ -1,0 +1,73 @@
+﻿@model VisionTake.Entities.TblAddress
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- begin row -->
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <!-- begin page title -->
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="ml-auto d-flex align-items-center">
+                <nav>
+                    <ol class="breadcrumb p-0 m-b-0">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action()"><i class="ti ti-home"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            Contact
+                        </li>
+                        <li class="breadcrumb-item active text-primary" aria-current="page">Add New Address</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- end page title -->
+    </div>
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-statistics">
+            <div class="card-header">
+                <div class="card-heading">
+                    <h4 class="card-title">Adding New Company Address</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                            <input asp-for="Address" type="text" placeholder="Address" class="form-control autonumber">
+                            <span class="font-14 text-muted">e.g. "Here Write Your Company Address"</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input asp-for="EmailAddress" type="text" placeholder="Email" class="form-control autonumber">
+                            <span class="font-14 text-muted">e.g. "Here Write Your Company Email"</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Phone Number</label>
+                        <div class="col-sm-10">
+                            <input asp-for="PhoneNumber" type="text" placeholder="Phone Number" class="form-control autonumber">
+                            <span class="font-14 text-muted">e.g. "Here Write Your Company Phone Number or Mobile Number"</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-square btn-success center" type="submit"> Save </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

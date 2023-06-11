@@ -1,0 +1,121 @@
+﻿@model IEnumerable<VisionTake.Entities.TblProduct>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- begin row -->
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <!-- begin page title -->
+        <div class="d-block d-sm-flex flex-nowrap align-items-center">
+            <div class="page-title mb-2 mb-sm-0">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="ml-auto d-flex align-items-center">
+                <nav>
+                    <ol class="breadcrumb p-0 m-b-0">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action()"><i class="ti ti-home"></i></a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            Products
+                        </li>
+                        <li class="breadcrumb-item active text-primary" aria-current="page">List</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- end page title -->
+    </div>
+</div>
+<!-- end row -->
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <a href="@Url.Action("Create","Product")" class="btn btn-info">Add New Product</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-statistics">
+            <div class="card-body">
+                <div class="datatable-wrapper table-responsive">
+                    <table id="datatable" class="display compact table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TblCategory)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductModel)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TblCategory.CategoryName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductModel)
+                                    </td>
+                                    <td>
+                                        @if (item.Description != null)
+                                        {
+                                            @(item.Description.Length > 200 ? item.Description.Substring(0, 100) : item.Description)
+                                        }
+                                        else
+                                        {
+
+                                            @item.Description
+                                        }
+                                    </td>
+                                    <td class="btn-group">
+                                        <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                                        <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a>
+                                        <button type="button" data-id="@item.ID" class="btn btn-danger productDeleteBtn">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        $(".productDeleteBtn").click(function () {
+      debugger;
+      var result = confirm("Are you sure delete this");
+      if (result == true) {
+
+          $.ajax({
+              url: "@Url.Action("DeleteConfirmed", "Product")",
+              method: "post",
+              data: {
+
+                  ID: $(this).attr("data-id")
+              }
+          }).done(function (response) {
+              debugger;
+               window.location.href = "@Url.Action("Index", "Product")";
+             // $("#listingArea").html(response);
+          });
+      }
+  });
+</script>

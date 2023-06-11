@@ -1,0 +1,72 @@
+﻿@model IEnumerable<VisionTake.Entities.TblAddress>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 m-b-30">
+        <a href="@Url.Action("Create","Addresses")" class="btn btn-info">Add New Address</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Phone Number
+            </th>
+            <th>
+               Email Address
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                <p>
+                    @(item.Address.Length > 200 ? item.Address.Substring(0, 100) : item.Address)
+                </p>
+            </td>
+            <td class="btn-group">
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                <a asp-route-id="@item.ID" data-id="@item.ID" class="btn btn-danger addressDeleteBtn">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(".addressDeleteBtn").click(function () {
+      debugger;
+      var result = confirm("Are you sure delete this");
+      if (result == true) {
+
+          $.ajax({
+              url: "@Url.Action("DeleteConfirmed", "Addresses")",
+              method: "post",
+              data: {
+
+                  ID: $(this).attr("data-id")
+              }
+          }).done(function (response) {
+              debugger;
+               window.location.href = "@Url.Action("Index", "Addresses")";
+             // $("#listingArea").html(response);
+          });
+      }
+  });
+</script>

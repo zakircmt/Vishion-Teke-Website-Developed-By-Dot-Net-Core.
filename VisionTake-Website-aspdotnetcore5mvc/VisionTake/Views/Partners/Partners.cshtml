@@ -1,0 +1,39 @@
+﻿@model IEnumerable<VisionTake.Entities.TblPartner>
+@{
+    ViewData["Title"] = "Partners";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Partners</h2>
+            <ol>
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li>Partners</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Our Partners</h2>
+        </div>
+        <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-logo">
+                        <img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid" alt="">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section><!-- End Our Clients Section -->

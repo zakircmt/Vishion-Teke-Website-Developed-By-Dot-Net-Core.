@@ -1,0 +1,42 @@
+﻿@model IEnumerable<VisionTake.Entities.TblEvent>
+
+@{
+    ViewData["Title"] = "Partner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Events</h2>
+            <ol>
+                <li><a href="@Url.Action()">Home</a></li>
+                <li>Events</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 style="text-align:center">Events</h2>
+        <div class="row portfolio-container">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+                    <img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid" alt="" style="width:300px;height:200px; border-radius:20px">
+                    <div class="portfolio-info">
+                        <h4>@item.EventTitle</h4>
+                        <p>@(item.EventDescription.Length > 20 ? item.EventDescription.Substring(0, 19) : item.EventDescription)</p>
+                        <a href="@Url.Content("~/Images/" + item.ImageUrl)" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="@item.EventTitle"><i class="bx bx-plus"></i></a>
+                        <a href="@Url.Action("Detail","Event",new { ID=item.ID})" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="section-title">
+            <a href="@Url.Action("Products","Product")" class="btn btn-success mt-4" style="border-radius:20px; width:150px; text-align:center; background-color:coral">View More</a>
+        </div>
+    </div>
+</section><!-- End Portfolio Section -->

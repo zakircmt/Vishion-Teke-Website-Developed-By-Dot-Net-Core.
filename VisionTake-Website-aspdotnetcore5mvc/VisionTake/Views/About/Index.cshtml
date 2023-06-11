@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VisionTake.Entities.TblAbout>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                The Title Of About
+            </th>
+            <th>
+                Description of About
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AboutTitle)
+                </td>
+
+                <td>
+                    <p>
+                        @(item.AboutDescription.Length > 200 ? item.AboutDescription.Substring(0, 100) : item.AboutDescription)
+                    </p>
+                </td>
+                <td>
+                    <img src="@Url.Content("~/Images/" + item.ImageUrl)" style="height:100px;width:100px" />
+                </td>
+                <td class="btn-group">
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

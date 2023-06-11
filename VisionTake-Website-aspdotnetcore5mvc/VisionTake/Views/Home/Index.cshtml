@@ -1,0 +1,214 @@
+﻿@model VisionTake.ViewModels.MasterLayoutViewModels
+@{
+    ViewData["Title"] = "Home Page";
+}
+<section id="hero">
+    <div id="heroCarousel" data-bs-interval="2000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <div class="carousel-inner" role="listbox">
+            @{
+                var i = 0;
+                foreach (var slider in Model.Sliders)
+                {
+                    var itemClass = i++ == 0 ? "carousel-item active" : "carousel-item";
+
+                    <!-- Slide 1 -->
+                    <div class="@itemClass" style="background-image:url('@Url.Content("~/Images/" + slider.ImageUrl)')">
+                        <div class="carousel-container">
+                            <div class="carousel-content animate__animated animate__fadeInUp">
+                                <h2>@slider.SliderTitle</h2>
+                                <p style="font-family: 'Poppins', sans-serif;">
+                                    @*@(slider.SliderDescription.Length>100 ? slider.SliderDescription.Length.Substring(0,99):slider.SliderDescription)*@
+                                    @*@Html.Raw((slider.SliderDescription.Length > 200 ? slider.SliderDescription.Substring(0, 20) : slider.SliderDescription))*@
+                                    @(slider.SliderDescription.Length > 200 ? slider.SliderDescription.Substring(0, 199) : slider.SliderDescription)
+
+                                </p>
+                                @*<img src="~/Images/@slider.ImageUrl" />*@
+                                <div class="text-center"><a href="@Url.Action("Details","Slider",new {ID=slider.ID })" class="btn-get-started" >Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+    </div>
+</section><!-- End Hero -->
+<section id="about-us" class="about-us">
+    <div class="container" data-aos="fade-up">
+        @foreach (var item in Model.TblAbout)
+	{
+        <div class="row content">
+            <div class="col-lg-6 col-sm-12" data-aos="fade-right">
+
+                <img class="col-lg-12 col-sm-12 col-md-12" src="@Url.Content("~/Images/" +item.ImageUrl)" />
+            </div>
+            <div class="col-lg-6 col-sm-12 pt-4 pt-lg-0" data-aos="fade-left">
+                <h2 style="text-align:center">@item.AboutTitle</h2>
+                <p style="font-family: 'Poppins', sans-serif;">
+                    @Html.Raw((item.AboutDescription.Length > 400 ? item.AboutDescription.Substring(0, 399) : item.AboutDescription))
+                </p>
+
+                <div class="text-center"><a href="@Url.Action("AboutUs","About")" class="btn btn-success" style="border-radius: 20px; width: 150px; text-align: center; ">Read More</a></div>
+            </div>
+        </div>
+	}
+       
+    </div>
+</section>
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+        <h1 style="text-align:center">Our Products</h1>
+        <div class="row">
+            @foreach (var item in Model.TblProduct)
+            {
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box iconbox-blue">
+                        <div class="bg-image hover-zoom">
+                            <a href="@Url.Action("Detail","Product",new { ID=item.ID})"><img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid w-100" alt="" style="width: 356px; height: 231px; border-radius: 5px;"></a>
+                        </div>
+                        <h4><a href="">@item.ProductName</a></h4>
+                        <p style="font-family: 'Poppins', sans-serif;">
+                            @if (item.Description != null)
+                            {
+                                @(item.Description.Length > 200 ? item.Description.Substring(0, 199) : item.Description)
+                            }
+                            else {
+                                @item.Description
+                            }
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="section-title">
+            <a href="@Url.Action("Products","Product")" class="btn btn-success mt-4" style="border-radius: 20px; width: 150px; text-align: center; ">View More</a>
+        </div>
+    </div>
+</section><!-- End Services Section -->
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2 style="text-align:center">Events</h2>
+        <div class="row portfolio-container">
+            @foreach (var item in Model.TblEvent)
+            {
+                <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+                    <img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid" alt="" style="width:300px;height:200px; border-radius:20px">
+                    <div class="portfolio-info">
+                        <h4 style="font-family: 'Poppins', sans-serif;">@item.EventTitle</h4>
+                        <p style="font-family: 'Poppins', sans-serif;">@Html.Raw((item.EventDescription.Length > 20 ? item.EventDescription.Substring(0, 19) : item.EventDescription))</p>
+                        <a href="@Url.Content("~/Images/" + item.ImageUrl)" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="@item.EventTitle"><i class="bx bx-plus"></i></a>
+                        <a href="@Url.Action("Detail","Event",new { ID=item.ID})" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="section-title">
+            <a href="@Url.Action("EventList","Event")" class="btn btn-success mt-4" style="border-radius: 20px; width: 150px; text-align: center;">View More</a>
+        </div>
+    </div>
+</section><!-- End Portfolio Section -->
+
+
+
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.TblReview)
+            {
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="testimonial-item">
+                        <img src="@Url.Content("~/Images/" + item.ImageUrl)" class="testimonial-img" alt="">
+                        <h3>@item.Name</h3>
+                        <h4>@Html.Raw(item.Designation)</h4>
+                        <p style="font-family: 'Poppins', sans-serif;">
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            @Html.Raw(item.Review)
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="section-title">
+            <a href="@Url.Action("Review","Reviews")" class="btn btn-success mt-4" style="border-radius: 20px; width: 150px; text-align: center; ">View More</a>
+        </div>
+    </div>
+</section>
+
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our <strong>Patents Certificate</strong></h2>
+        </div>
+
+        <div class="row">
+
+            @foreach (var item in Model.TblPatent)
+            {
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member" data-aos="fade-up">
+                        <div class="member-img">
+                            <a href="@Url.Action("PatentList","Patents")"><img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid" alt=""></a>
+                            @*<div class="social">
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>*@
+                        </div>
+                        <div class="member-info">
+                            <h4>@item.PatentName</h4>
+                            <span>Patents</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="section-title">
+                <a class="btn btn-success" style="border-radius: 20px; width: 150px; text-align: center;" href="@Url.Action("Partners","Partners")">View More</a>
+            </div>
+        </div>
+    </div>
+</section><!-- End Our Team Section -->
+<!-- ======= Our Clients Section ======= -->
+<section id="clients" class="clients">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Our Partners</h2>
+        </div>
+
+        <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+
+            @foreach (var item in Model.TblPartner)
+            {
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-logo">
+                        <img src="@Url.Content("~/Images/" + item.ImageUrl)" class="img-fluid" alt="">
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="section-title">
+            <a class="btn btn-success" style="border-radius:20px; width:150px; text-align:center;" href="@Url.Action("Partners","Partners")">View More</a>
+        </div>
+    </div>
+</section><!-- End Our Clients Section -->

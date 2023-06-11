@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>VisionTeke</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="VisionTeke Medical Imaging Systems Co., Ltd was established in Pakistan with an R & D centers (research and development center). VisionTeke Medical Imaging Systems Co., Ltd is a high-tech and big data enterprise, focusing on the artificial intelligence (AI), computer neural network, Virtual mixed reality and other technologies in the field of precision medicine for clinical application research." />
+    <meta name="author" content="Potenza Global Solutions" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- app favicon -->
+    <link rel="shortcut icon" href="~/theme/assets/img/visionicon.ico">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- plugin stylesheets -->
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors.css" />
+    <!-- app style -->
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/style.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- begin app -->
+    <div class="app">
+        <!-- begin app-wrap -->
+        <div class="app-wrap">
+            <!-- begin pre-loader -->
+            <div class="loader">
+                <div class="h-100 d-flex justify-content-center">
+                    <div class="align-self-center">
+                        <img src="/theme/assets/img/logo.png" alt="loader">
+                    </div>
+                </div>
+            </div>
+            <!-- end pre-loader -->
+            <!-- begin app-header -->
+            <header class="app-header top-bar">
+                <!-- begin navbar -->
+                <nav class="navbar navbar-expand-md">
+
+                    <!-- begin navbar-header -->
+                    <div class="navbar-header d-flex align-items-center">
+                        <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
+                        <a class="navbar-brand" href="@Url.Action("Index","AdminDashboard")">
+                            <img src="/theme/assets/img/logo.png" class="img-fluid logo-desktop" alt="logo" />
+                            <img src="/theme/assets/img/logo.png" class="img-fluid logo-mobile" alt="logo" />
+                        </a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti ti-align-left"></i>
+                    </button>
+                    <!-- end navbar-header -->
+                    <!-- begin navigation -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navigation d-flex">
+                            <ul class="navbar-nav nav-left">
+                                <li class="nav-item">
+                                    <a href="javascript:void(0)" class="nav-link sidebar-toggle">
+                                        <i class="ti ti-align-right"></i>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item full-screen d-none d-lg-block" id="btnFullscreen">
+                                    <a href="javascript:void(0)" class="nav-link expand">
+                                        <i class="icon-size-fullscreen"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav nav-right ml-auto">
+                                <li class="nav-item dropdown user-profile">
+                                    <a href="javascript:void(0)" class="nav-link dropdown-toggle " id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="/theme/assets/img/logo.png" alt="avtar-img">
+                                        <span class="bg-success user-status"></span>
+                                    </a>
+                                    <div class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown">
+                                        <div class="bg-gradient px-4 py-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="mr-1">
+                                                    <h4 class="text-white mb-0">Alice Williams</h4>
+                                                    <small class="text-white">Henry@example.com</small>
+                                                </div>
+                                                <form method="post" action="@Url.Action("Logout","Auth")">
+                                                    <button style="background-color: #4B75E7;" type="submit" href="#" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
+                                                        <i class="zmdi zmdi-power"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end navigation -->
+                </nav>
+                <!-- end navbar -->
+            </header>
+            <!-- end app-header -->
+            <!-- begin app-container -->
+            <div class="app-container">
+                <!-- begin app-nabar -->
+                <aside class="app-navbar">
+                    <!-- begin sidebar-nav -->
+                    <div class="sidebar-nav scrollbar scroll_light">
+                        <ul class="metismenu " id="sidebarNav">
+                            <li class="nav-static-title">Menus</li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Dashboards</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","AdminDashboard")'>Dashboard</a> </li>
+                                    <li> <a href='@Url.Action("Index","About")'>About</a> </li>
+                                    <li> <a href='@Url.Action("Index","Mission")'>Mision</a> </li>
+                                    <li> <a href='@Url.Action("Index","Visions")'>Vision</a> </li>
+                                    <li> <a href='@Url.Action("Index","Addresses")'>Contact</a> </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Slider</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Slider")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Slider")'>Add</a> </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Events</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Event")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Event")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Category</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Categories")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Categories")'>Add</a> </li>
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Sub Category</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","SubCategories")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","SubCategories")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Product</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Product")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Product")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Services</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Services")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Services")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">News</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","News")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","News")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Reviews</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Reviews")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Reviews")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Patents</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Patents")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Patents")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Partners</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","PartnerCategories")'>Partner Category</a> </li>
+                                    <li> <a href='@Url.Action("Create","PartnerCategories")'>Add Partner Category</a> </li>
+                                    <li> <a href='@Url.Action("Index","Partners")'>View Partner</a> </li>
+                                    <li> <a href='@Url.Action("Create","Partners")'>Add Partner</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Teams</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Teams")'>View</a> </li>
+                                    <li> <a href='@Url.Action("Create","Teams")'>Add</a> </li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                    <i class="nav-icon ti ti-rocket"></i>
+                                    <span class="nav-title">Subscribe & Message</span>
+                                    <span class="nav-label label label-danger"></span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li class="active"> <a href='@Url.Action("Index","Subscribes")'>Subscribe List</a> </li>
+                                    <li> <a href='@Url.Action("Index","TblContacts")'>Message List </a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end sidebar-nav -->
+                </aside>
+                <!-- end app-navbar -->
+                <!-- begin app-main -->
+                <div class="app-main" id="main" style="color:black">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid" style="color:black">
+                        @RenderBody()
+                        <!-- end container-fluid -->
+                    </div>
+                    <!-- end app-main -->
+                </div>
+            </div>
+            <!-- end app-container -->
+            <!-- begin footer -->
+            <footer class="footer">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-center text-sm-left">
+                        <p>&copy; Copyright 2019. All rights reserved. <span style="color:red">Vision</span> Teke</p>
+                    </div>
+                    <div class="col  col-sm-6 ml-sm-auto text-center text-sm-right">
+                        <p><a target="_blank" href="https://techbungalow.net">Tech Bungalow</a></p>
+                    </div>
+                </div>
+            </footer>
+            <!-- end footer -->
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+    <!-- plugins -->
+    <script src="~/admin/assets/js/vendors.js"></script>
+
+    <!-- custom app -->
+    <script src="~/admin/assets/js/app.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+
+</html>
